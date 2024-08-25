@@ -32,3 +32,16 @@
     --warning: 48 96% 89%;
     --warning-foreground: 38 92% 50%;
 }
+
+
+.p-icon-field {
+    width: 100%;
+}
+
+input {
+    box-shadow: none;
+}
+
+.p-checkbox-box {
+    background-color: hsl(var(--primary));
+}

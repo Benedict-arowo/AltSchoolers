@@ -1,45 +1,46 @@
-import Logo from "@/Components/Main/Logo";
-import { Button } from "@/Components/ui/button";
-import { Input } from "@/Components/ui/input";
-import { Label } from "@/Components/ui/label";
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/Components/ui/popover";
-import password_icon from "@/assets/icons/password.svg";
-import { cn } from "@/lib/utils";
-import { CalendarIcon } from "@radix-ui/react-icons";
-import { format } from "date-fns";
+import { InputText } from "primereact/inputtext";
+import Logo from "../../Components/Main/Logo";
+import password_icon from "../../assets/icons/password.svg";
+import { InputNumber } from "primereact/inputnumber";
+import { RadioButton } from "primereact/radiobutton";
+import { Calendar } from "primereact/calendar";
+import { Dropdown } from "primereact/dropdown";
 import { useState } from "react";
-import { Calendar } from "@/Components/ui/calendar";
 
 const Register = () => {
-	const [date, setDate] = useState<Date>();
-	return (
-		<div>
-			<header>
-				<div></div>
-				<Logo />
-			</header>
+	const [selectedState, setSelectedState] = useState(null);
+	const states = [
+		{ name: "Osun", code: "OS" },
+		{ name: "Ondo", code: "ON" },
+		{ name: "Abia", code: "Ab" },
+		{ name: "Kaduna", code: "KA" },
+		{ name: "Bauchi", code: "BA" },
+	];
 
-			<main>
-				<div>
+	return (
+		<div className="lg:px-12 md:px-6 px-1 mb-6">
+			<main className="flex-1 py-6 lg:mx-16 md:mx-8 mx-4">
+				<header>
+					<div></div>
+					<Logo />
+				</header>
+
+				<div className="mt-12">
 					<h2 className="font-bold text-3xl">Sign up</h2>
 					<p className="font-medium text-sm mt-2">
 						Please enter your details to create an account
 					</p>
 				</div>
 
-				<section>
+				<section className="mt-10">
 					<h3 className="font-medium text-2xl">
 						Personal information
 					</h3>
 
-					<div className="px-16 flex flex-col gap-6">
-						<section className="flex flex-row gap-6 justify-between">
+					<div className="px-16 flex flex-col gap-6 mt-6">
+						<section className="flex flex-row flex-wrap gap-6 justify-between">
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="first_name">First name</Label>
+								<label htmlFor="first_name">First name</label>
 
 								<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 									<img
@@ -47,17 +48,17 @@ const Register = () => {
 										className=""
 										alt=""
 									/>
-									<Input
-										type="text"
+									<InputText
 										id="first_name"
-										className="text-primary font-normal px-1 border-none outline-none"
+										aria-describedby="first_name-help"
+										className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
 										placeholder="Enter your first name"
 									/>
 								</div>
 							</fieldset>
 
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="last_name">Last name</Label>
+								<label htmlFor="last_name">Last name</label>
 
 								<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 									<img
@@ -65,10 +66,10 @@ const Register = () => {
 										className=""
 										alt=""
 									/>
-									<Input
-										type="text"
+									<InputText
 										id="last_name"
-										className="text-primary font-normal px-1 border-none outline-none"
+										aria-describedby="last_name-help"
+										className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
 										placeholder="Enter your last name"
 									/>
 								</div>
@@ -77,7 +78,7 @@ const Register = () => {
 
 						<section className="flex flex-row gap-6 justify-between">
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="first_name">Email</Label>
+								<label htmlFor="first_name">Email</label>
 
 								<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 									<img
@@ -85,17 +86,17 @@ const Register = () => {
 										className=""
 										alt=""
 									/>
-									<Input
-										type="email"
+									<InputText
 										id="email"
-										className="text-primary font-normal px-1 border-none outline-none"
+										aria-describedby="email-help"
+										className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
 										placeholder="Enter your email"
 									/>
 								</div>
 							</fieldset>
 
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="last_name">Phone number</Label>
+								<label htmlFor="last_name">Phone number</label>
 
 								<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 									<img
@@ -103,11 +104,13 @@ const Register = () => {
 										className=""
 										alt=""
 									/>
-									<Input
-										type="password"
-										id="last_name"
-										className="text-primary font-normal px-1 border-none outline-none"
-										placeholder="Enter your phone number"
+									<InputNumber
+										name="emergency_phone_number"
+										id="emergency_phone_number"
+										className="text-accent font-normal px-1 border-none outline-none py-2 w-full shadow-none"
+										placeholder="Enter emergency contact phone number"
+										useGrouping={false}
+										value={8116661234}
 									/>
 								</div>
 							</fieldset>
@@ -115,61 +118,42 @@ const Register = () => {
 
 						<section className="flex flex-row gap-6 justify-between">
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="first_name">
+								<label htmlFor="first_name">
 									Date of birth
-								</Label>
+								</label>
 
 								<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
-									<Popover>
-										<PopoverTrigger asChild>
-											<Button
-												variant={"outline"}
-												className={cn(
-													"w-full justify-start text-left font-normal",
-													!date &&
-														"text-muted-foreground"
-												)}>
-												<CalendarIcon className="mr-2 h-4 w-4" />
-												{date ? (
-													format(date, "PPP")
-												) : (
-													<span>Pick a date</span>
-												)}
-											</Button>
-										</PopoverTrigger>
-										<PopoverContent className="w-auto p-0">
-											<Calendar
-												mode="single"
-												selected={date}
-												onSelect={setDate}
-												initialFocus
-											/>
-										</PopoverContent>
-									</Popover>
+									<Calendar
+										value={new Date()}
+										dateFormat="dd/mm/yy"
+										className="text-accent font-normal px-1 border-none outline-none py-2 w-full shadow-none"
+									/>
 								</div>
 							</fieldset>
 
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="last_name">Gender</Label>
+								<label htmlFor="last_name">Gender</label>
 
 								<div className="flex flex-row gap-2">
-									<div className="flex flex-row gap-2 py-2 rounded-md border-2 px-4 border-secondary">
-										<input
-											type="radio"
+									<div className="flex flex-row gap-2 py-2 rounded-md border-2 px-4 border-primary items-center">
+										<RadioButton
 											name="gender"
-											id="male"
+											value={"Male"}
+											checked
+											className="outline rounded-full outline-accent"
 										/>
-										<p className="font-light text-accent">
+										<p className="font-light text-accent ">
 											Male
 										</p>
 									</div>
-									<div className="flex flex-row gap-2 py-2 rounded-md border-2 px-4 border-secondary">
-										<input
-											type="radio"
+									<div className="flex flex-row gap-2 py-2 rounded-md border-2 px-4 border-secondary items-center">
+										<RadioButton
 											name="gender"
-											id="female"
+											value={"Female"}
+											checked={false}
+											className="outline rounded-full outline-accent"
 										/>
-										<p className="font-light text-accent">
+										<p className="font-light text-accent ">
 											Female
 										</p>
 									</div>
@@ -179,7 +163,9 @@ const Register = () => {
 
 						<section className="flex flex-row gap-6 justify-between">
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="nationality">Nationality</Label>
+								<label htmlFor="state_of_origin">
+									State of origin
+								</label>
 
 								<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 									<img
@@ -187,18 +173,20 @@ const Register = () => {
 										className=""
 										alt=""
 									/>
-									<Input
-										type="email"
-										id="email"
-										className="text-primary font-normal px-1 border-none outline-none"
-										placeholder="Enter your email"
+
+									<Dropdown
+										value={selectedState}
+										options={states}
+										optionLabel="name"
+										editable
+										placeholder="Select a State"
+										className="w-full md:w-14rem py-2 shadow-none"
 									/>
-									{/* <option value="country"></option> */}
 								</div>
 							</fieldset>
 
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="last_name">Address</Label>
+								<label htmlFor="last_name">Address</label>
 
 								<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 									<img
@@ -206,10 +194,10 @@ const Register = () => {
 										className=""
 										alt=""
 									/>
-									<Input
-										type="text"
+									<InputText
 										id="address"
-										className="text-primary font-normal px-1 border-none outline-none"
+										aria-describedby="address-help"
+										className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
 										placeholder="Enter your address"
 									/>
 								</div>
@@ -218,9 +206,9 @@ const Register = () => {
 
 						<section className="flex flex-row gap-6 justify-between">
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="nationality">
+								<label htmlFor="nationality">
 									Emergency contact
-								</Label>
+								</label>
 
 								<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 									<img
@@ -228,17 +216,19 @@ const Register = () => {
 										className=""
 										alt=""
 									/>
-									<Input
-										type="text"
+									<InputText
 										id="emergency_contact"
-										className="text-primary font-normal px-1 border-none outline-none"
-										placeholder="Enter emergency contact name"
+										aria-describedby="emergency_contact-help"
+										className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
+										placeholder="Enter your emergency contact"
 									/>
 								</div>
 							</fieldset>
 
 							<fieldset className="grid w-full items-center gap-1.5">
-								<Label htmlFor="last_name">Phone number</Label>
+								<label htmlFor="last_name">
+									Emergency Phone number
+								</label>
 
 								<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 									<img
@@ -246,11 +236,13 @@ const Register = () => {
 										className=""
 										alt=""
 									/>
-									<Input
-										type="number"
+									<InputNumber
+										name="emergency_phone_number"
 										id="emergency_phone_number"
-										className="text-primary font-normal px-1 border-none outline-none"
+										className="text-accent font-normal px-1 border-none outline-none py-2 w-full shadow-none"
 										placeholder="Enter emergency contact phone number"
+										useGrouping={false}
+										value={8116661234}
 									/>
 								</div>
 							</fieldset>

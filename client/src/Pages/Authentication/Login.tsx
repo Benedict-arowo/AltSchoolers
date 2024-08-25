@@ -1,17 +1,16 @@
-import Logo from "@/Components/Main/Logo";
-import { Button } from "@/Components/ui/button";
-import { Checkbox } from "@/Components/ui/checkbox";
-import { Input } from "@/Components/ui/input";
-import { Label } from "@/Components/ui/label";
+import Logo from "../../Components/Main/Logo";
+import login_frame from "../../assets/login_frame.png";
+import password_icon from "../../assets/icons/password.svg";
+import email_icon from "../../assets/icons/email.svg";
 import { Link } from "react-router-dom";
-import login_frame from "@/assets/login_frame.png";
-import password_icon from "@/assets/icons/password.svg";
-import email_icon from "@/assets/icons/email.svg";
+import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
+import { TriStateCheckbox } from "primereact/tristatecheckbox";
 
 const Login = () => {
 	return (
-		<div className="flex justify-center flex-row gap-0 px-12">
-			<main className="flex-1  py-6 mx-16">
+		<div className="flex justify-center flex-row gap-0 lg:px-12 md:px-6 px-1">
+			<main className="flex-1 py-6 lg:mx-16 md:mx-8 mx-4">
 				<Logo />
 
 				<header className="mt-20">
@@ -20,55 +19,60 @@ const Login = () => {
 						Please enter your details to login into your account.
 					</p>
 				</header>
+
 				<div className="w-full">
 					<section className="mt-12 flex flex-col gap-4">
 						<fieldset className="grid w-full items-center gap-1.5">
-							<Label htmlFor="email">Email</Label>
+							<label htmlFor="email">Email</label>
 							<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 								<img src={email_icon} className="" alt="" />
-								<Input
-									type="email"
+								<InputText
 									id="email"
-									className="text-primary font-normal px-1 border-none"
+									aria-describedby="email-help"
+									className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
 									placeholder="Enter your email"
 								/>
 							</div>
 						</fieldset>
 
 						<fieldset className="grid w-full items-center gap-1.5">
-							<Label htmlFor="password">Password</Label>
+							<label htmlFor="password">Password</label>
 
 							<div className="flex flex-row items-center gap-2 border-2 border-secondary px-2 rounded-md py-0.5 focus-within:border-primary">
 								<img src={password_icon} className="" alt="" />
-								<Input
-									type="password"
-									id="password"
-									className="text-primary font-normal px-1 border-none outline-none"
+								<Password
 									placeholder="Enter your password"
+									toggleMask
+									feedback={false}
+									className="text-accent font-normal px-1 border-none shadow-none outline-none w-full py-2"
 								/>
 							</div>
 						</fieldset>
 					</section>
 
 					<section className="mt-3 flex flex-row justify-between items-center">
-						<fieldset className="flex flex-row gap-1">
-							<Checkbox className="" />
-							<Label
+						<fieldset className="flex flex-row items-center gap-1">
+							<TriStateCheckbox
+								value={true}
+								className=""
+								variant="filled"
+							/>
+							<label
 								htmlFor="remember"
-								className="font-light text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+								className="font-light text-xs sm:text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
 								Remember me
-							</Label>
+							</label>
 						</fieldset>
 
 						<a
 							href=""
-							className="text-primary focus:underline hover:underline text-sm">
+							className="text-primary focus:underline hover:underline text-xs sm:text-sm">
 							Forgotten password?
 						</a>
 					</section>
-					<Button className="bg-primary text-white w-full my-2">
+					<button className="bg-primary py-2 rounded-md text-white w-full mt-4 mb-2">
 						Login
-					</Button>
+					</button>
 					<p className="w-full cursor-default text-center font-normal">
 						Don't have an account?{" "}
 						<Link
@@ -79,12 +83,14 @@ const Login = () => {
 					</p>
 				</div>
 			</main>
-			<img
-				className="flex-1 hidden md:block max-h-screen object-cover py-2"
-				src={login_frame}
-				alt=""
-				draggable="false"
-			/>
+			<div>
+				<img
+					className="flex-1 rounded-lg overflow-hidden hidden md:block max-h-screen object-cover py-2"
+					src={login_frame}
+					alt=""
+					draggable="false"
+				/>
+			</div>
 		</div>
 	);
 };

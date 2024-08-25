@@ -6,6 +6,7 @@ const Logo = () => {
 			<img
 				src={LogoPNG}
 				alt="HealthSync's Logo"
+				draggable={false}
 				className="w-[60px] h-[60px]"
 			/>
 			<h1 className="text-3xl font-bold">
