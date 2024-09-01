@@ -3,6 +3,8 @@ import App from "./App";
 import ErrorPage from "./Error";
 import Login from "./Authentication/Login";
 import Register from "./Authentication/Register";
+import AuthIndex from "./Authentication/Index";
+
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 
@@ -18,8 +20,11 @@ const Index = () => {
 					element={<App />}
 					errorElement={<ErrorPage />}
 				/>
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Register />} />
+				<Route path="/auth">
+					<Route path="/auth/" element={<AuthIndex />} />
+					<Route path="/auth/login" element={<Login />} />
+					<Route path="/auth/register" element={<Register />} />
+				</Route>
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 		</div>
