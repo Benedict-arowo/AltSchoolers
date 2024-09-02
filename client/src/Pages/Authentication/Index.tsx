@@ -10,7 +10,7 @@ const Index = () => {
 				<div className="flex flex-row items-center justify-center px-12">
 					<Logo />
 				</div>
-				<h2 className="text-3xl font-semi-bold w-full text-center mt-24">
+				<h2 className="text-3xl font-normal w-full text-center mt-24">
 					Choose a profile to sign in
 				</h2>
 			</header>

@@ -7,6 +7,7 @@ import AuthIndex from "./Authentication/Index";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
+import VisitInquiry from "./Client Dashboard/VisitInquiry";
 
 // import "primeicons/primeicons.css"; //icons
 // import "primeflex/primeflex.css"; // flex
@@ -20,6 +21,12 @@ const Index = () => {
 					element={<App />}
 					errorElement={<ErrorPage />}
 				/>
+				<Route path="/client-dashboard">
+					<Route
+						path="/client-dashboard/new-inquiry"
+						element={<VisitInquiry />}
+					/>
+				</Route>
 				<Route path="/auth">
 					<Route path="/auth/" element={<AuthIndex />} />
 					<Route path="/auth/login" element={<Login />} />
