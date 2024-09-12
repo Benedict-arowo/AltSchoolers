@@ -5,6 +5,7 @@ import Login from "./Authentication/Login";
 import AuthIndex from "./Authentication/Index";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
+import AboutUs from "./About";
 import VisitInquiry from "./Client Dashboard/VisitInquiry";
 import RegisterUser from "./Authentication/RegisterUser";
 
@@ -17,6 +18,7 @@ const Index = () => {
 					element={<App />}
 					errorElement={<ErrorPage />}
 				/>
+				<Route path="/about" element={<AboutUs />} />
 				<Route path="/client-dashboard">
 					<Route
 						path="/client-dashboard/new-inquiry"

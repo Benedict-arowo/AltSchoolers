@@ -45,3 +45,32 @@ input {
 .p-checkbox-box {
     background-color: hsl(var(--primary));
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+.gradient-border {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #4f46e5, #7f3f8c);
+    /* Gradient background */
+    border-radius: 8px;
+    /* Ensure border-radius is consistent */
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: red;
+    /* Gradient border */
+    border-radius: inherit;
+    /* Match border-radius */
+    background-clip: padding-box;
+    /* Clip background to padding box */
+}
