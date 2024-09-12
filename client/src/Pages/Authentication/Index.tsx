@@ -1,7 +1,8 @@
 import PrivateAccountIcon from "../../assets/icons/user.svg";
-import AdminAccountIcon from "../../assets/icons/manager.svg";
+// import AdminAccountIcon from "../../assets/icons/manager.svg";
 import HealthCarAccountIcon from "../../assets/icons/doctor-01.svg";
 import Logo from "../../Components/Main/Logo";
+import { Link } from "react-router-dom";
 
 const Index = () => {
 	return (
@@ -11,13 +12,15 @@ const Index = () => {
 					<Logo />
 				</div>
 				<h2 className="text-3xl font-normal w-full text-center mt-24">
-					Choose a profile to sign in
+					Choose a profile to register
 				</h2>
 			</header>
 
-			<section className="w-full flex flex-row justify-center gap-x-6">
-				<div className="max-w-[250px] rounded-lg pb-4 flex flex-col items-center cursor-pointer">
-					<div className="w-full bg-gray-200 grid place-content-center py-12 rounded-lg">
+			<section className="w-full flex flex-row justify-center gap-x-24 mt-4">
+				<Link
+					to="/auth/user"
+					className="max-w-[250px] rounded-lg pb-4 flex flex-col items-center cursor-pointer">
+					<div className="w-full bg-gray-200 grid place-content-center py-12 rounded-lg hover:bg-gray-300 duration-300">
 						<img
 							src={PrivateAccountIcon}
 							alt={"Private account icon"}
@@ -32,9 +35,11 @@ const Index = () => {
 							appointments.
 						</p>
 					</div>
-				</div>
+				</Link>
 
-				<div className="max-w-[250px] rounded-lg pb-4 flex flex-col items-center cursor-pointer">
+				<Link
+					to="/auth/health-provider"
+					className="max-w-[250px] rounded-lg pb-4 flex flex-col items-center cursor-pointer hover:bg-gray-300 duration-300">
 					<div className="w-full bg-gray-200 grid place-content-center py-12 rounded-lg">
 						<img
 							src={HealthCarAccountIcon}
@@ -49,9 +54,11 @@ const Index = () => {
 							Access patient records and hospital systems
 						</p>
 					</div>
-				</div>
+				</Link>
 
-				<div className="max-w-[250px] rounded-lg pb-4 flex flex-col items-center cursor-pointer">
+				{/* <Link
+					to="/auth/admin"
+					className="max-w-[250px] rounded-lg pb-4 flex flex-col items-center cursor-pointer">
 					<div className="w-full bg-gray-200 grid place-content-center py-12 rounded-lg">
 						<img
 							src={AdminAccountIcon}
@@ -66,7 +73,7 @@ const Index = () => {
 							Manage hospital operations and access analytics
 						</p>
 					</div>
-				</div>
+				</Link> */}
 			</section>
 		</div>
 	);

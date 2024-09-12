@@ -10,7 +10,7 @@ import { useState } from "react";
 import { InputTextarea } from "primereact/inputtextarea";
 import { TriStateCheckbox } from "primereact/tristatecheckbox";
 
-const Register = () => {
+const RegisterUser = () => {
 	const [selectedState, setSelectedState] = useState(null);
 	const states = [
 		{ name: "Osun", code: "OS" },
@@ -531,4 +531,4 @@ const Register = () => {
 	);
 };
 
-export default Register;
+export default RegisterUser;
