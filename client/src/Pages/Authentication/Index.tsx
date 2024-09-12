@@ -20,7 +20,7 @@ const Index = () => {
 				<Link
 					to="/auth/user"
 					className="max-w-[250px] rounded-lg pb-4 flex flex-col items-center cursor-pointer">
-					<div className="w-full bg-gray-200 grid place-content-center py-12 rounded-lg hover:bg-gray-300 duration-300">
+					<div className="w-full hover:bg-gradient-to-r bg-gray-200 grid place-content-center py-12 rounded-lg hover:bg-blue-300 duration-300">
 						<img
 							src={PrivateAccountIcon}
 							alt={"Private account icon"}
@@ -39,8 +39,8 @@ const Index = () => {
 
 				<Link
 					to="/auth/health-provider"
-					className="max-w-[250px] rounded-lg pb-4 flex flex-col items-center cursor-pointer hover:bg-gray-300 duration-300">
-					<div className="w-full bg-gray-200 grid place-content-center py-12 rounded-lg">
+					className="max-w-[250px] rounded-lg pb-4 flex flex-col items-center cursor-pointer">
+					<div className="w-full hover:bg-gradient-to-r bg-gray-200 grid place-content-center py-12 rounded-lg hover:bg-blue-300 duration-300">
 						<img
 							src={HealthCarAccountIcon}
 							alt={"Private account icon"}

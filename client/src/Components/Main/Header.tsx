@@ -35,7 +35,7 @@ const Header = ({ showNavigation = true }) => {
 				)}
 				<div className="space-x-4">
 					<Link
-						to="/auth/user"
+						to="/auth"
 						className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
 						Sign Up
 					</Link>
