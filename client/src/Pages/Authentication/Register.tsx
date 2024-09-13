@@ -177,6 +177,9 @@ const Register = () => {
 									<Dropdown
 										value={selectedState}
 										options={states}
+										onChange={(e) =>
+											setSelectedState(e.value)
+										}
 										optionLabel="name"
 										editable
 										placeholder="Select a State"
