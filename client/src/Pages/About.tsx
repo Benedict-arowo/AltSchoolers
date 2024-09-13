@@ -133,7 +133,13 @@ const AboutUs = () => {
 	);
 };
 
-const FeatureCard = ({ title, description }) => (
+const FeatureCard = ({
+	title,
+	description,
+}: {
+	title: string;
+	description: string;
+}) => (
 	<div className="bg-white p-6 rounded-lg shadow-lg">
 		<h3 className="text-2xl font-semibold mb-4">{title}</h3>
 		<p className="text-gray-700">{description}</p>

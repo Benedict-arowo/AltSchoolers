@@ -13,6 +13,7 @@ import { FaIdCard, FaIdBadge } from "react-icons/fa";
 import validationSchema from "../../Components/Authentication/ValidationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const defaultValues: FormData = {
 	firstName: "",
@@ -52,12 +53,6 @@ const RegisterUser = () => {
 		resolver: yupResolver(validationSchema),
 	});
 
-	const onSubmit = (data) => {
-		// Handle form submission
-		console.log(data);
-		// Call backend API here
-	};
-
 	const states = [
 		{ name: "Osun", code: "OS" },
 		{ name: "Ondo", code: "ON" },
@@ -66,13 +61,13 @@ const RegisterUser = () => {
 		{ name: "Bauchi", code: "BA" },
 	];
 
-	const updateFormData = (key: string, value: string) => {
+	const updateFormData = (key: string, value: any) => {
 		setFormData((prev) => ({ ...prev, [key]: value }));
 	};
 
 	useEffect(() => {
-		console.log(errors);
-	}, [formData]);
+		console.log(errors, control);
+	}, []);
 
 	return (
 		<div className="lg:px-12 md:px-6 px-1 mb-6">
@@ -94,8 +89,9 @@ const RegisterUser = () => {
 				<form
 					onSubmit={(e) => {
 						e.preventDefault();
-						console.log("Submitting");
-						handleSubmit(onSubmit);
+						handleSubmit(() => {
+							console.log("Submitting");
+						});
 					}}>
 					<section className="mt-10 w-full">
 						<h3 className="font-medium text-2xl w-full text-center">
@@ -200,10 +196,7 @@ const RegisterUser = () => {
 										<Calendar
 											value={formData.dob}
 											onChange={(e) =>
-												updateFormData(
-													"dob",
-													e.value?.toString() || ""
-												)
+												updateFormData("dob", e.value)
 											}
 											dateFormat="dd/mm/yy"
 											className="text-accent font-normal px-1 border-none outline-none py-2 w-full shadow-none"
@@ -295,7 +288,7 @@ const RegisterUser = () => {
 												)
 											}
 											options={states}
-											optionLabel="state_of_origin"
+											optionLabel="name"
 											editable
 											placeholder="Select a State"
 											className="w-full md:w-14rem py-2 shadow-none"
@@ -355,7 +348,9 @@ const RegisterUser = () => {
 										<InputNumber
 											name="emergency_phone"
 											id="emergency_phone"
-											value={formData.emergencyPhone}
+											value={
+												formData.emergencyPhoneNumber
+											}
 											onChange={(e) =>
 												updateFormData(
 													"emergencyPhone",
@@ -396,7 +391,7 @@ const RegisterUser = () => {
 											}
 											aria-describedby="medical-condition"
 											className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
-											placeholder="Select any that apply"
+											placeholder="Undergoing ...."
 										/>
 									</div>
 								</fieldset>
@@ -419,7 +414,7 @@ const RegisterUser = () => {
 											}
 											aria-describedby="current_medications"
 											className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
-											placeholder="Select any that apply"
+											placeholder="eg: Panadol..."
 										/>
 									</div>
 								</fieldset>
@@ -537,6 +532,7 @@ const RegisterUser = () => {
 												)
 											}
 											aria-describedby="family_history"
+											rows={1}
 											className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
 											placeholder="e.g: Father had heart disease."
 										/>
@@ -560,6 +556,7 @@ const RegisterUser = () => {
 												)
 											}
 											aria-describedby="past_medical-history"
+											rows={1}
 											className="text-accent font-normal px-1 border-none w-full py-2 outline-none shadow-none"
 											placeholder="e.g: Father had heart disease."
 										/>
@@ -635,9 +632,11 @@ const RegisterUser = () => {
 							<p className="text-accent">
 								I acknowledge that I have reviewed and agreed to
 								the{" "}
-								<span className="text-primary">
+								<Link
+									to="./"
+									className="text-primary underline">
 									privacy policy
-								</span>
+								</Link>
 							</p>
 						</div>
 						<div className="flex flex-row items-center gap-4">

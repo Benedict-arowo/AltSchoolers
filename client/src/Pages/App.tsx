@@ -15,7 +15,13 @@ import { Link } from "react-router-dom";
 import Header from "../Components/Main/Header";
 import Footer from "../Components/Main/Footer";
 
-const FeatureCard = ({ icon: Icon, title, description }) => (
+interface FeatureCardProps {
+	icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+	title: string;
+	description: string;
+}
+
+const FeatureCard = ({ icon: Icon, title, description }: FeatureCardProps) => (
 	<motion.div
 		className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
 		whileHover={{ scale: 1.05 }}
@@ -26,14 +32,14 @@ const FeatureCard = ({ icon: Icon, title, description }) => (
 	</motion.div>
 );
 
-const AnimatedNumber = ({ value }) => {
+const AnimatedNumber = ({ value }: { value: string }) => {
 	const [displayValue, setDisplayValue] = useState(0);
 
 	useEffect(() => {
 		let start = 0;
 		const end = parseInt(value);
 		const duration = 2000;
-		let timer = setInterval(() => {
+		const timer = setInterval(() => {
 			start += 1;
 			setDisplayValue(start);
 			if (start === end) clearInterval(timer);

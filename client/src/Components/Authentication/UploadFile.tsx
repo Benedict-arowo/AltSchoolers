@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { SyntheticEvent, useRef, useState } from "react";
 import { Toast } from "primereact/toast";
 import {
 	FileUpload,
@@ -20,7 +20,7 @@ const UploadFile = () => {
 
 	const onTemplateSelect = (e: FileUploadSelectEvent) => {
 		let _totalSize = totalSize;
-		let files = e.files;
+		const files = e.files;
 
 		for (let i = 0; i < files.length; i++) {
 			_totalSize += files[i].size || 0;
@@ -44,7 +44,10 @@ const UploadFile = () => {
 		});
 	};
 
-	const onTemplateRemove = (file: File, callback: Function) => {
+	const onTemplateRemove = (
+		file: File,
+		callback: (event?: SyntheticEvent) => void
+	) => {
 		setTotalSize(totalSize - file.size);
 		callback();
 	};
@@ -98,7 +101,10 @@ const UploadFile = () => {
 						<img
 							alt={file.name}
 							role="presentation"
-							src={file.objectURL}
+							src={
+								(file as unknown as { objectURL: string })
+									.objectURL
+							}
 							width={100}
 						/>
 						<span className="flex flex-column text-left ml-3">
@@ -117,7 +123,8 @@ const UploadFile = () => {
 							icon="pi pi-trash"
 							className="p-button-outlined p-button-rounded p-button-danger ml-auto h-fit w-fit"
 							onClick={() =>
-								onTemplateRemove(file, props.onRemove)
+								// eslint-disable-next-line @typescript-eslint/no-explicit-any
+								onTemplateRemove(file, (props as any).onRemove)
 							}
 						/>
 					</div>
