@@ -1,0 +1,176 @@
+import { Badge } from '@/components/ui/badge';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  ChevronDown,
+  Home,
+  LineChart,
+  Package,
+  ShoppingCart,
+  Users,
+} from 'lucide-react';
+import { ReactNode, useState } from 'react';
+import LogoPNG from '../../assets/Logo.png';
+
+interface MainLayoutProps {
+  children: ReactNode;
+}
+
+const MainLayout = ({ children }: MainLayoutProps) => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
+
+  return (
+    <main className="min-h-screen bg-secondary flex">
+      <aside
+        className={`h-screen transition-transform transform ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } sm:translate-x-0`}
+      >
+        {/* <div className="hidden border-r bg-muted/40 md:block"> */}
+        <div className="flex h-full max-h-screen flex-col gap-2">
+          <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+            <a href="/" className="flex items-center gap-2 text-sm">
+              <img
+                src={LogoPNG}
+                alt="HealthSync's Logo"
+                draggable={false}
+                className="w-[25px] h-[25px]"
+              />
+              <div>
+                <p className="font-semibold">Hassan Musa</p>
+                <p className="">Metro General Hospital</p>
+              </div>
+            </a>
+            <button className="ml-auto h-8 w-8">
+              <ChevronDown size={16} />
+              <span className="sr-only">Change Hospital</span>
+            </button>
+          </div>
+
+          <div className="w-full p-2 flex items-center justify-between">
+      <div className="relative">
+        <SearchIcon
+          className="absolute left-2 top-1/2 transform -translate-y-1/2"
+          size={16}
+        />
+
+        <input
+          placeholder="Search"
+            type="text"
+          className="pl-8 h-8 bg-secondary rounded-lg placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50"
+        />
+       
+      </div>
+
+          <div className="flex-1">
+            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+              <a
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <Home className="h-4 w-4" />
+                <span className="hidden lg:block">
+
+                Dashboard
+                </span>
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <ShoppingCart className="h-4 w-4" />
+                <span className="hidden lg:block">
+
+                Appointments
+                </span>
+                <Badge className="ml-auto bg-green-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white">
+                  12
+                </Badge>
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+              >
+                <Package className="h-4 w-4" />
+                <span className="hidden lg:block">
+
+                Emergency cases
+                </span>
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <Users className="h-4 w-4" />
+                <span className="hidden lg:block">
+
+                Customers
+                </span>
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <LineChart className="h-4 w-4" />
+                <span className="hidden lg:block">
+
+                Patient management
+                </span>
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <LineChart className="h-4 w-4" />
+                <span className="hidden lg:block">
+
+                Notifications
+                </span>
+                <Badge className="ml-auto bg-green-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white">
+                  4
+                </Badge>
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <LineChart className="h-4 w-4" />
+                <span className="hidden lg:block">
+
+                Insurance management
+                </span>
+              </a>
+            </nav>
+          </div>
+          <div className="mt-auto p-4">
+            <Card x-chunk="dashboard-02-chunk-0">
+              <CardHeader className="p-2 pt-0 md:p-4">
+                <CardTitle>Upgrade to Pro</CardTitle>
+                <CardDescription>
+                  Unlock all features and get unlimited access to our support
+                  team.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
+                <button className="w-full">Upgrade</button>
+              </CardContent>
+            </Card>
+          </div>
+          {/* </div> */}
+        </div>
+      </aside>
+      <section className="w-full flex-1 m-4 rounded-md bg-white">
+        {children}
+      </section>
+    </main>
+  );
+};
+
+export default MainLayout;
