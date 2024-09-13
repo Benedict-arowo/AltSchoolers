@@ -3,6 +3,7 @@ import App from "./App";
 import ErrorPage from "./Error";
 import Login from "./Authentication/Login";
 import Register from "./Authentication/Register";
+import Registration from "./Authentication/Registration";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 
@@ -20,6 +21,7 @@ const Index = () => {
 				/>
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
+				<Route path="/registration" element={<Registration />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 		</div>
