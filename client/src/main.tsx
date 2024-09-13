@@ -4,6 +4,7 @@ import "./assets/styles/index.css";
 import { BrowserRouter } from "react-router-dom";
 import Index from "./Pages/Index.tsx";
 import { PrimeReactProvider } from "primereact/api";
+import "primeicons/primeicons.css";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
