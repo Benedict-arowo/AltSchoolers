@@ -132,7 +132,10 @@ const PatientTable = () => {
         </div>
       </div>
 
-      <DataTable columns={columns} data={filteredData} />
+      <DataTable
+        columns={columns}
+        data={table.getRowModel().rows.map((row) => row.original)}
+      />
     </div>
   );
 };
