@@ -25,6 +25,15 @@
     --muted-foreground: 215.4 16.3% 46.9%;
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
+
+    --accent-foreground: 0 0% 9%;
+    --destructive-foreground: 0 0% 98%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 212 68% 36% 0.2;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
 }
 
 
@@ -73,4 +82,71 @@ html {
     /* Match border-radius */
     background-clip: padding-box;
     /* Clip background to padding box */
+}
+
+.card-gradient {
+    position: relative;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease;
+}
+
+.card-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(117.22deg, #FFFFFF 10.96%, rgba(228, 236, 250, 0.8) 52.49%, #FFFFFF 91.48%);
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+}
+
+.card-gradient:hover::before {
+    opacity: 0.8;
+}
+
+
+.react-calendar__navigation {
+    border: none !important;
+    background: none !important;
+}
+
+.react-calendar {
+    font-family: "Inter", sans-serif !important;
+    border: none !important;
+    width: 100%;
+}
+
+.react-calendar__tile {
+    font-family: inherit !important;
+    height: 35px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+.react-calendar__tile:hover {
+    background-color: #DCEAF9 !important;
+    color: #0E4481 !important;
+}
+
+.react-calendar__tile--now {
+    background-color: #beffdb !important;
+    font-weight: bold !important;
+}
+
+.react-calendar__tile--active {
+    background-color: #DCEAF9 !important;
+    font-weight: bold !important;
+}
+
+.recharts-rectangle {
+    fill: hsla(212, 68%, 36%, 0.2) !important;
+}
+
+.recharts-rectangle:hover {
+    fill: url(#colorGradient) !important;
 }
