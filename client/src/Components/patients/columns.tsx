@@ -7,6 +7,7 @@ export type Patient = {
   gender: string;
   age: number;
   'date admitted'?: string;
+  'time admitted'?: string;
   status?: 'stable' | 'recovery' | 'in surgery' | 'critical' | 'unavailable';
   'room no': string;
   'last visit'?: string;
@@ -31,9 +32,21 @@ export const inPatientColumns: ColumnDef<Patient>[] = [
     accessorKey: 'age',
     header: 'Age',
   },
+  { accessorKey: 'time admitted', header: 'Time Admitted', enableHiding: true },
   {
     accessorKey: 'date admitted',
     header: 'Date Admitted',
+    cell: ({ row }) => {
+      console.log(row);
+      const dateAdmitted = row.getValue('date admitted');
+      const timeAdmitted = row.getValue('time admitted') || 'time admitted';
+
+      if (!dateAdmitted || !timeAdmitted) {
+        return null;
+      }
+
+      return `${dateAdmitted} ${timeAdmitted}`;
+    },
   },
   {
     accessorKey: 'room no',

@@ -79,7 +79,7 @@ export function PatientChart() {
             />
             <Tooltip cursor={false} />
 
-            <Bar dataKey="desktop" fill="url(#colorGradient)" radius={4} />
+            <Bar dataKey="desktop" radius={4} />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

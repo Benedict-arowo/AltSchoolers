@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <div className="bg-secondary min-h-screen w-full grid grid-cols-1 md:grid-cols-[60px_1fr] lg:grid-cols-[250px_1fr]">
       {/* Sidebar */}
-      <aside className="hidden md:block bg-muted/40">
+      <aside className="hidden md:block">
         <div className="fixed md:w-[60px] lg:w-[250px] h-full flex flex-col py-4 gap-4">
           {/* Sidebar Header */}
           <div className="flex items-center border-b p-4">
