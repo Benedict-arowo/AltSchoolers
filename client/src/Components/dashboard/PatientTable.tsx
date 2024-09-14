@@ -2,10 +2,8 @@ import {
   allPatientColumns,
   inPatientColumns,
   Patient,
-} from '@/components/patients/columns';
+} from '../patients/columns';
 
-import { DataTable } from '@/components/patients/data-table';
-import { patientData } from '@/data/patients';
 import { MixerHorizontalIcon } from '@radix-ui/react-icons';
 import {
   ColumnDef,
@@ -15,6 +13,8 @@ import {
 } from '@tanstack/react-table';
 import { SearchIcon } from 'lucide-react';
 import { useState } from 'react';
+import { patientData } from '../../data/patients';
+import { DataTable } from '../patients/data-table';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
