@@ -102,7 +102,7 @@ export function EventCalendar() {
           formatShortWeekday={(locale, date) =>
             date.toLocaleDateString(locale, { weekday: 'narrow' })
           }
-          onChange={(date: Date) => setSelectedDate(date)}
+          onChange={(date: any) => setSelectedDate(date)}
           value={selectedDate}
           tileContent={({ date, view }: any) =>
             view === 'month' && renderEventDots(date)
