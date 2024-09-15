@@ -76,7 +76,7 @@ const UploadFile = () => {
 				{uploadButton}
 				{cancelButton}
 				<div className="flex align-items-center gap-3 ml-auto">
-					<span>{formatedValue} / 1 MB</span>
+					<span>{formatedValue} / 10 MB</span>
 					<ProgressBar
 						value={value}
 						showValue={false}
@@ -145,12 +145,7 @@ const UploadFile = () => {
 						src={upload_icon}
 						alt="Upload Identification document icon"
 					/>
-					<p className="font-normal text-accent">
-						<span className="font-semibold text-primary">
-							Click to upload
-						</span>{" "}
-						or drag and drop
-					</p>
+					<p className="font-normal text-accent">Drag and drop</p>
 					<span className="text-gray-400 text-sm font-light w-full text-center">
 						SVG, PNG, JPG or GIF (max. 10MB)
 					</span>

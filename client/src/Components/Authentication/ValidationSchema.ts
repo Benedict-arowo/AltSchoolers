@@ -10,26 +10,24 @@ const validationSchema = Yup.object().shape({
 		.typeError("Phone number must be a number")
 		.required("Phone number is required"),
 	dob: Yup.date().required("Date of birth is required"),
-	gender: Yup.string()
-		.oneOf(["Male", "Female"], "Gender is required")
-		.required("Gender is required"),
-	stateOfOrigin: Yup.object().shape({
-		code: Yup.string().required("State code is required"),
-		name: Yup.string().required("State name is required"),
-	}),
+	// gender: Yup.string()
+	// 	.oneOf(["Male", "Female"], "Gender is required")
+	// 	.required("Gender is required"),
+	stateOfOrigin: Yup.string().required("State of origin is required"),
+
 	address: Yup.string().required("Address is required"),
 	emergencyContact: Yup.string().required("Emergency contact is required"),
 	emergencyPhoneNumber: Yup.number()
 		.typeError("Emergency phone number must be a number")
 		.required("Emergency phone number is required"),
-	medicalCondition: Yup.string(),
-	currentMedications: Yup.string(),
-	vaccinationHistory: Yup.string(),
-	pastProcedures: Yup.string(),
-	allergies: Yup.string(),
-	bloodType: Yup.string(),
-	familyHistory: Yup.string(),
-	pastMedicalHistory: Yup.string(),
+	medicalCondition: Yup.string().required(),
+	currentMedications: Yup.string().required(),
+	vaccinationHistory: Yup.string().required(),
+	pastProcedures: Yup.string().required(),
+	allergies: Yup.string().required(),
+	bloodType: Yup.string().required(),
+	familyHistory: Yup.string().required(),
+	pastMedicalHistory: Yup.string().required(),
 	identificationType: Yup.string().required(
 		"Identification type is required"
 	),

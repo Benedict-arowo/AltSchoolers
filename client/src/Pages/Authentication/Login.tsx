@@ -9,8 +9,8 @@ import { TriStateCheckbox } from "primereact/tristatecheckbox";
 
 const Login = () => {
 	return (
-		<div className="flex justify-center flex-row gap-0 lg:px-12 md:px-6 px-1">
-			<main className="flex-1 py-6 lg:mx-16 md:mx-8 mx-4">
+		<div className="flex justify-center flex-row gap-12 lg:px-12 md:px-6 px-1 max-h-screen">
+			<main className="max-w-[500px] mx-auto w-full py-6 lg:mx-16 md:mx-8">
 				<Logo />
 
 				<header className="mt-20">
@@ -76,16 +76,17 @@ const Login = () => {
 					<p className="w-full cursor-default text-center font-normal">
 						Don't have an account?{" "}
 						<Link
-							to="/register"
+							state={{ from: "/auth/login" }}
+							to="/auth"
 							className="text-primary focus:underline hover:underline">
 							Signup for free
 						</Link>
 					</p>
 				</div>
 			</main>
-			<div>
+			<div className="h-screen rounded-md overflow-hidden hidden md:block">
 				<img
-					className="flex-1 rounded-lg overflow-hidden hidden md:block max-h-screen object-cover py-2"
+					className="object-cover py-2 h-full w-full"
 					src={login_frame}
 					alt=""
 					draggable="false"

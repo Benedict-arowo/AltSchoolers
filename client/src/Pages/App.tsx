@@ -82,10 +82,12 @@ const App = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, delay: 0.4 }}>
-						<Button
-							label="Get Started"
-							className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
-						/>
+						<Link
+							to={"/auth"}
+							state={{ from: "/" }}
+							className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
+							Get Started
+						</Link>
 
 						<Link
 							to={"/about"}
@@ -208,14 +210,14 @@ const App = () => {
 							us? Contact our team today to start transforming
 							healthcare together.
 						</p>
-						<div className="flex justify-center space-x-4">
+						<div className="flex justify-center flex-col md:flex-row gap-y-4 gap-x-2">
 							<InputText
 								className="border-2 px-4 py-2"
 								placeholder="Enter your email"
 							/>
 							<Button
 								label="Contact Us"
-								className="bg-black text-white py-1 px-4 rounded-lg shadow-md hover:bg-neutral-800 transition duration-300"
+								className="bg-black text-white py-2 md:py-1 w-full md:w-fit px-4 rounded-lg shadow-md hover:bg-neutral-800 transition duration-300"
 							/>
 						</div>
 					</div>
