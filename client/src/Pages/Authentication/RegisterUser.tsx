@@ -15,6 +15,7 @@ import { ChevronLeft, HeartPulse, IdCard, Syringe } from "lucide-react";
 import { FaIdBadge } from "react-icons/fa";
 import { Dialog } from "primereact/dialog";
 import Congratulations from "../../Components/Authentication/Congratulations";
+import { Nullable } from "primereact/ts-helpers";
 
 const defaultValues: FormData = {
 	firstName: "",
@@ -66,7 +67,7 @@ const RegisterUser = () => {
 
 	const updateFormData = (
 		key: string,
-		value: string | number | object | Date
+		value: string | number | object | Nullable<Date>
 	) => {
 		setFormData((prev) => ({ ...prev, [key]: value }));
 	};
